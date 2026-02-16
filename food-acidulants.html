@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Acidulants | Stratagos Ventures Ltd</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #058d49;
+            --accent: #d4af37;
+            --dark: #0f172a;
+            --footer-bg: #0b1120;
+            --light: #f8fafc;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none; }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; font-size: 0.95rem; }
+        .cta-quote { background: var(--primary); color: white !important; padding: 0.8rem 1.5rem; border-radius: 6px; }
+
+        /* Hero */
+        .category-hero {
+            padding: 70px 5%;
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(5, 141, 73, 0.85)), url('images/acidulants-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        .category-hero h1 { font-size: 2.8rem; margin-bottom: 15px; font-weight: 800; }
+        .category-hero p { max-width: 800px; margin: 0 auto; opacity: 0.9; font-size: 1.1rem; }
+
+        /* Product Grid */
+        .product-section { padding: 60px 5% 100px; }
+        .acid-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 25px; 
+        }
+
+        .acid-card { 
+            background: white; 
+            border-radius: 12px; 
+            padding: 30px; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary);
+            display: flex;
+            flex-direction: column;
+            transition: 0.3s ease;
+        }
+        .acid-card:hover { transform: translateY(-8px); border-top-color: var(--accent); }
+        
+        .acid-type { 
+            color: var(--accent); 
+            font-weight: 800; 
+            font-size: 0.7rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1.2px; 
+            margin-bottom: 10px; 
+        }
+        .acid-card h3 { color: var(--dark); font-size: 1.3rem; margin-bottom: 12px; }
+        .acid-card p { color: #64748b; font-size: 0.88rem; margin-bottom: 20px; flex-grow: 1; }
+
+        .benefit-list { list-style: none; margin-bottom: 25px; border-top: 1px solid #f1f5f9; padding-top: 15px; }
+        .benefit-list li { font-size: 0.82rem; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; font-weight: 600; color: #334155; }
+        .benefit-list i { color: var(--primary); font-size: 0.75rem; }
+
+        .btn-rfq { 
+            text-align: center;
+            padding: 10px; 
+            background: var(--light);
+            color: var(--primary); 
+            text-decoration: none; 
+            font-weight: 700; 
+            border-radius: 6px; 
+            font-size: 0.85rem; 
+            transition: 0.3s;
+            border: 1px solid var(--primary);
+        }
+        .btn-rfq:hover { background: var(--primary); color: white; }
+
+        /* WhatsApp */
+        .whatsapp-btn { 
+            position: fixed; bottom: 30px; right: 30px; 
+            background: #25d366; color: white; 
+            width: 60px; height: 60px; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 30px; z-index: 1000; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+            text-decoration: none; 
+        }
+
+        /* --- FOOTER (MATCHING IMAGE) --- */
+        footer {
+            background-color: var(--footer-bg);
+            color: #ffffff;
+            padding: 60px 5% 40px;
+        }
+        .footer-contact-info { display: flex; justify-content: flex-end; margin-bottom: 40px; }
+        .contact-block { border-left: 2px solid var(--accent); padding-left: 15px; }
+        .contact-block p { font-size: 0.95rem; margin-bottom: 5px; }
+        .contact-block strong { color: #ffffff; font-weight: 700; }
+        .footer-divider { border-top: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 40px; }
+        .footer-main-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.5fr; gap: 40px; }
+        .footer-brand h2 { font-size: 1.2rem; margin-bottom: 20px; }
+        .footer-brand p { font-size: 0.9rem; opacity: 0.8; margin-bottom: 25px; }
+        .footer-links h3, .footer-legal h3 { font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #ffffff; text-decoration: none; opacity: 0.8; font-size: 0.9rem; }
+        .footer-legal p { font-size: 0.85rem; opacity: 0.8; margin-bottom: 10px; }
+        .copyright-gold { color: var(--accent); font-weight: 600; font-size: 0.95rem; margin-top: 15px; }
+        .social-icons { display: flex; gap: 20px; }
+        .social-icons a { color: #ffffff; font-size: 1.2rem; }
+
+        @media (max-width: 992px) {
+            .footer-main-grid { grid-template-columns: 1fr; }
+            .footer-contact-info { justify-content: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/2348033159094" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <nav>
+        <a href="index.html" class="logo">STRATAGOS<span>VENTURES</span></a>
+        <ul class="nav-links">
+            <li><a href="sectors.html">Sectors</a></li>
+            <li><a href="expertise.html">Expertise</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">contact</a></li>
+            <li><a href="quote.html" class="cta-quote">Get a Quote</a></li>
+        </ul>
+    </nav>
+
+    <header class="category-hero">
+        <h1>Food Acidulants</h1>
+        <p>High-purity organic acids for pH control, flavor enhancement, and preservation across the food and beverage industry.</p>
+    </header>
+
+    <main class="product-section">
+        <div class="acid-grid">
+            
+            <div class="acid-card">
+                <span class="acid-type">Flavor & pH</span>
+                <h3>Citric Acid Anhydrous</h3>
+                <p>Premium grade organic acid used as a natural preservative and for adding a sour taste to beverages.</p>
+                <ul class="benefit-list">
+                    <li><i class="fas fa-check"></i> High solubility</li>
+                    <li><i class="fas fa-check"></i> Excellent chelating agent</li>
+                </ul>
+                <a href="quote.html" class="btn-rfq">Request RFQ</a>
+            </div>
+
+            <div class="acid-card">
+                <span class="acid-type">Preservation</span>
+                <h3>Lactic Acid 80%</h3>
+                <p>Food-grade liquid acidulant essential for pH regulation in brewing and dairy applications.</p>
+                <ul class="benefit-list">
+                    <li><i class="fas fa-check"></i> Mild acid taste</li>
+                    <li><i class="fas fa-check"></i> Inhibits pathogen growth</li>
+                </ul>
+                <a href="quote.html" class="btn-rfq">Request RFQ</a>
+            </div>
+
+            <div class="acid-card">
+                <span class="acid-type">Fruit Profiles</span>
+                <h3>Malic Acid</h3>
+                <p>Commonly used in fruit-flavored beverages to provide a smooth, lingering tartness that mimics natural fruit.</p>
+                <ul class="benefit-list">
+                    <li><i class="fas fa-check"></i> Enhances fruit flavors</li>
+                    <li><i class="fas fa-check"></i> Masks artificial aftertastes</li>
+                </ul>
+                <a href="quote.html" class="btn-rfq">Request RFQ</a>
+            </div>
+
+            <div class="acid-card">
+                <span class="acid-type">Beverage Stability</span>
+                <h3>Tartaric Acid</h3>
+                <p>Essential for wine production and soft drinks to manage acidity and ensure chemical stability.</p>
+                <ul class="benefit-list">
+                    <li><i class="fas fa-check"></i> Distinctive sharp tang</li>
+                    <li><i class="fas fa-check"></i> Natural grape origin</li>
+                </ul>
+                <a href="quote.html" class="btn-rfq">Request RFQ</a>
+            </div>
+
+            <div class="acid-card">
+                <span class="acid-type">Cola & Brewing</span>
+                <h3>Phosphoric Acid</h3>
+                <p>Industrial strength food-grade acidulant used primarily in cola beverages and for yeast nutrition in brewing.</p>
+                <ul class="benefit-list">
+                    <li><i class="fas fa-check"></i> Strong pH reduction</li>
+                    <li><i class="fas fa-check"></i> Cost-effective acidulant</li>
+                </ul>
+                <a href="quote.html" class="btn-rfq">Request RFQ</a>
+            </div>
+
+            <div class="acid-card">
+                <span class="acid-type">Antioxidant</span>
+                <h3>Ascorbic Acid (Vit C)</h3>
+                <p>Dual-function additive used as an antioxidant to prevent color fading and as a nutritional supplement.</p>
+                <ul class="benefit-list">
+                    <li><i class="fas fa-check"></i> Prevents oxidation</li>
+                    <li><i class="fas fa-check"></i> Label-friendly ingredient</li>
+                </ul>
+                <a href="quote.html" class="btn-rfq">Request RFQ</a>
+            </div>
+
+            <div class="acid-card">
+                <span class="acid-type">Buffering Agent</span>
+                <h3>Sodium Citrate</h3>
+                <p>The salt of citric acid, used to control acidity levels and as an emulsifier in processed foods.</p>
+                <ul class="benefit-list">
+                    <li><i class="fas fa-check"></i> Excellent buffer capacity</li>
+                    <li><i class="fas fa-check"></i> Salty/Tart flavor profile</li>
+                </ul>
+                <a href="quote.html" class="btn-rfq">Request RFQ</a>
+            </div>
+
+            <div class="acid-card">
+                <span class="acid-type">Pickling & Sauces</span>
+                <h3>Acetic Acid</h3>
+                <p>Used for its characteristic pungent smell and flavor in pickling, condiments, and sauce manufacturing.</p>
+                <ul class="benefit-list">
+                    <li><i class="fas fa-check"></i> Potent antimicrobial</li>
+                    <li><i class="fas fa-check"></i> 99% High concentration</li>
+                </ul>
+                <a href="quote.html" class="btn-rfq">Request RFQ</a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-contact-info">
+            <div class="contact-block">
+                <p><strong>Office:</strong> 1 Floor, Suite AB 72, Amazing Grace Plaza, Mushin Road, behind GTB Bank, Isolo Lagos.</p>
+                <p><strong>Phone:</strong> 0803 315 9094</p>
+                <p><strong>email:</strong> support@stratagosventures.com</p>
+            </div>
+        </div>
+
+        <div class="footer-divider"></div>
+
+        <div class="footer-main-grid">
+            <div class="footer-brand">
+                <h2>Stratagos Ventures Ltd</h2>
+                <p>The strategic backbone for industrial manufacturing and logistics excellence in Nigeria.</p>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/stratagos-ventures-ltd-1744442a0/"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="sectors.html">Industries Served</a></li>
+                    <li><a href="expertise.html">Core Expertise</a></li>
+                    <li><a href="all-products.html">Supplied Products</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-legal">
+                <h3>Legal</h3>
+                <p>© 2026 Stratagos Ventures Ltd. All Rights Reserved.</p>
+                <div class="copyright-gold">stratagos copyright reserved</div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

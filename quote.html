@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request a Quote | Stratagos Ventures Ltd</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #058d49;
+            --accent: #d4af37;
+            --dark: #0f172a;
+            --light: #f1f5f9;
+            --white: #ffffff;
+            --shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none; }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; font-size: 0.95rem; }
+
+        /* Quote Page Header */
+        .quote-header {
+            background: var(--dark);
+            color: white;
+            padding: 60px 8%;
+            text-align: center;
+        }
+        .quote-header h1 { font-size: 2.5rem; margin-bottom: 10px; color: var(--accent); }
+        .quote-header p { opacity: 0.8; font-size: 1.1rem; }
+
+        /* Form Container */
+        .quote-container {
+            max-width: 900px;
+            margin: -50px auto 100px;
+            background: var(--white);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .rfq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: 700; margin-bottom: 8px; color: var(--primary); font-size: 0.9rem; text-transform: uppercase; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #f8fafc;
+        }
+
+        /* Upload Box */
+        .upload-box {
+            border: 2px dashed var(--accent);
+            background: #fffdf5;
+            padding: 40px;
+            text-align: center;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .upload-box:hover { background: #fdf6d8; border-color: var(--primary); }
+        .upload-box i { font-size: 2.5rem; color: var(--accent); margin-bottom: 15px; }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            padding: 18px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; z-index: 1000; box-shadow: 0 10px 25px rgba(0,0,0,0.2); text-decoration: none; }
+
+        /* Footer */
+        footer { background: #0f172a; color: white; padding: 80px 8% 40px; }
+        .footer-top { display: flex; justify-content: flex-end; margin-bottom: 40px; }
+        .footer-addr { border-left: 3px solid var(--accent); padding-left: 20px; text-align: left; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 4rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 45px; }
+        
+        .socials { margin-top: 20px; }
+        .socials a { color: white; margin-right: 20px; font-size: 1.4rem; transition: 0.3s; text-decoration: none; }
+        .socials a:hover { color: var(--accent); }
+
+        @media (max-width: 768px) {
+            .rfq-grid { grid-template-columns: 1fr; }
+            .quote-container { margin: 20px; padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/2348033159094" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <nav>
+        <a href="index.html" class="logo">STRATAGOS<span>VENTURES</span></a>
+        <ul class="nav-links">
+            <li><a href="sectors.html">Sectors</a></li>
+            <li><a href="expertise.html">Expertise</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="quote.html" class="cta-quote">Get a Quote</a></li>
+        </ul>
+    </nav>
+
+    <div class="quote-header">
+        <h1>Request for Quotation</h1>
+        <p>Submit your requirements and our procurement team will respond within 24 hours.</p>
+    </div>
+
+    <div class="quote-container">
+        <form>
+            <div class="rfq-grid">
+                <div class="form-group">
+                    <label>Company Name</label>
+                    <input type="text" placeholder="Your Industries Ltd" required>
+                </div>
+                <div class="form-group">
+                    <label>Contact Person</label>
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+            </div>
+
+            <div class="rfq-grid">
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="procurement@company.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Industry Sector</label>
+                    <select>
+                        <option>Brewing & Beverages</option>
+                        <option>Pharmaceuticals</option>
+                        <option>Food & Agro</option>
+                        <option>General Product Sourcing</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>List of Products / Required Quantity</label>
+                <textarea rows="5" placeholder="Example: Lactic Acid 80% (50 Drums)..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Attach Official RFQ (PDF or Excel)</label>
+                <div class="upload-box" onclick="document.getElementById('fileIn').click()">
+                    <i class="fas fa-file-invoice"></i>
+                    <p id="fileLabel">Drag & Drop or Click to Upload Specifications</p>
+                    <input type="file" id="fileIn" hidden onchange="document.getElementById('fileLabel').innerText = this.files[0].name">
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">SUBMIT QUOTE REQUEST</button>
+        </form>
+    </div>
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-addr">
+                <p><strong>Office:</strong> 1 Floor, Suite AB 72, Amazing Grace Plaza, Mushin Road, behind GTB Bank, Isolo, Lagos.</p>
+                <p><strong>Phone:</strong> 0803 315 9094</p>
+                <p><strong>Email:</strong> support@stratagosventures.com</p>
+            </div>
+        </div>
+        <div class="footer-grid">
+            <div>
+                <h3 style="color: white; margin-bottom: 1.5rem;">Stratagos Ventures Ltd</h3>
+                <p style="opacity: 0.8; font-size: 0.95rem; margin-bottom: 1.5rem;">The strategic backbone for industrial manufacturing and logistics excellence in Nigeria.</p>
+                <div class="socials">
+                    <a href="https://www.linkedin.com/in/stratagos-ventures-ltd-1744442a0/"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <ul style="list-style: none; opacity: 0.8; font-size: 0.95rem; line-height: 2.5;">
+                    <li><a href="index.html" style="color: white; text-decoration: none;">Home</a></li>
+                    <li><a href="products.html" style="color: white; text-decoration: none;">Product Catalog</a></li>
+                    <li><a href="contact.html" style="color: white; text-decoration: none;">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Legal</h3>
+                <p style="opacity: 0.8; font-size: 0.95rem;">© 2026 Stratagos Ventures Ltd. <br>All Rights Reserved.</p>
+                <p style="color: var(--accent); font-weight: 700; margin-top: 10px;">stratagos copyright reserved</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

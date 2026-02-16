@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industrial Catalog | Stratagos Ventures Ltd</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #058d49;
+            --accent: #d4af37;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none; }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; font-size: 0.95rem; }
+        .cta-quote { background: var(--primary); color: white !important; padding: 0.8rem 1.5rem; border-radius: 6px; }
+
+        /* Product Hero */
+        .page-hero {
+            height: 40vh;
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), 
+                        url('images/products-hero.png'); 
+            background-size: cover; background-position: center;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: white;
+        }
+        .page-hero h1 { font-size: 3rem; font-weight: 800; }
+
+        /* Product Catalog Layout */
+        .catalog-container { padding: 80px 8%; display: grid; grid-template-columns: 280px 1fr; gap: 4rem; }
+
+        /* Sidebar Filter */
+        .sidebar { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); height: fit-content; }
+        .sidebar h3 { font-size: 1.2rem; color: var(--primary); margin-bottom: 1.5rem; border-bottom: 2px solid var(--light); padding-bottom: 10px; }
+        .filter-list { list-style: none; }
+        .filter-list li { margin-bottom: 12px; }
+        .filter-list a { text-decoration: none; color: #64748b; font-size: 0.95rem; display: block; padding: 8px 12px; border-radius: 6px; transition: 0.3s; }
+        .filter-list a:hover, .filter-list a.active { background: var(--primary); color: white; }
+
+        /* Product Table/Cards */
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
+        .product-card { background: white; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); transition: 0.3s; }
+        .product-card:hover { border-color: var(--primary); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .prod-info { padding: 25px; }
+        .prod-info h4 { font-size: 1.3rem; color: var(--dark); margin-bottom: 10px; }
+        .prod-tag { display: inline-block; padding: 4px 10px; background: #f0fdf4; color: var(--primary); border-radius: 4px; font-size: 0.75rem; font-weight: 800; margin-bottom: 15px; text-transform: uppercase; }
+        .prod-desc { font-size: 0.9rem; color: #64748b; margin-bottom: 20px; }
+        .prod-footer { border-top: 1px solid var(--light); padding-top: 15px; display: flex; justify-content: space-between; align-items: center; }
+        .btn-inquiry { color: var(--primary); text-decoration: none; font-weight: 700; font-size: 0.85rem; }
+
+        /* Footer */
+        footer { background: #0f172a; color: white; padding: 60px 8% 30px; }
+        .footer-top { display: flex; justify-content: flex-end; margin-bottom: 30px; }
+        .footer-addr { border-left: 3px solid var(--accent); padding-left: 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 4rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 40px; }
+
+        @media (max-width: 992px) {
+            .catalog-container { grid-template-columns: 1fr; }
+            .sidebar { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">STRATAGOS <span>VENTURES LTD</span></a>
+        <ul class="nav-links">
+            <li><a href="sectors.html">Sectors</a></li>
+            <li><a href="expertise.html">Expertise</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="index.html#quote" class="cta-quote">Get a Quote</a></li>
+        </ul>
+    </nav>
+
+    <header class="page-hero">
+        <h1>Our Product Portfolio</h1>
+    </header>
+
+    <div class="catalog-container">
+        <aside class="sidebar">
+            <h3>Categories</h3>
+            <ul class="filter-list">
+                <li><a href="index.html" class="active">All Products</a></li>
+                <li><a href="brewing-enzymes.html">Brewing Enzymes</a></li>
+                <li><a href="clarification-agents.html">Clarification Agents</a></li>
+                <li><a href="food-acidulants.html">Food Acidulants</a></li>
+                <li><a href="pharma-excipients.html">Pharma Excipients</a></li>
+                <li><a href="industrial-solvents.html">Industrial Solvents</a></li>
+            </ul>
+        </aside>
+
+        <main class="product-grid">
+            <div class="product-card">
+                <div class="prod-info">
+                    <span class="prod-tag">Brewing</span>
+                    <h4>Termamyl SC DS</h4>
+                    <p class="prod-desc">A liquid enzyme for high-temperature starch liquefaction. Ideal for use in cereal adjunct cooking and mashing.</p>
+                    <div class="prod-footer">
+                        <span style="font-size: 0.8rem; font-weight: 600;">Grade: Industrial</span>
+                        <a href="quote.html" class="btn-inquiry">Request Specs <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <span class="prod-tag">Clarification</span>
+                    <h4>Whirlfloc</h4>
+                    <p class="prod-desc">A premium Irish Moss powder formulation used to improve wort clarity and trub formation during the boil.</p>
+                    <div class="prod-footer">
+                        <span style="font-size: 0.8rem; font-weight: 600;">Grade: Food</span>
+                        <a href="quote.html" class="btn-inquiry">Request Specs <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <span class="prod-tag">Stabilization</span>
+                    <h4>Biofine Clear A3</h4>
+                    <p class="prod-desc">High-efficiency kettle and maturation fining agent for superior haze reduction in beverage production.</p>
+                    <div class="prod-footer">
+                        <span style="font-size: 0.8rem; font-weight: 600;">Grade: Food</span>
+                        <a href="quote.html" class="btn-inquiry">Request Specs <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <span class="prod-tag">Acids</span>
+                    <h4>Lactic Acid 80%</h4>
+                    <p class="prod-desc">Food-grade acidulant used for pH adjustment, flavor enhancement, and preservation in various processes.</p>
+                    <div class="prod-footer">
+                        <span style="font-size: 0.8rem; font-weight: 600;">Grade: FCC/USP</span>
+                        <a href="quote.html" class="btn-inquiry">Request Specs <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <span class="prod-tag">Extraction</span>
+                    <h4>IKE Hops Extracts</h4>
+                    <p class="prod-desc">Standardized hop extracts providing consistent bitterness and aroma profiles for large-scale brewing.</p>
+                    <div class="prod-footer">
+                        <span style="font-size: 0.8rem; font-weight: 600;">Grade: Food</span>
+                        <a href="quote.html" class="btn-inquiry">Request Specs <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="prod-info">
+                    <span class="prod-tag">Enzymes</span>
+                    <h4>AMG BrewQ</h4>
+                    <p class="prod-desc">Glucoamylase enzyme used to achieve high attenuation levels and optimize fermentation efficiency.</p>
+                    <div class="prod-footer">
+                        <span style="font-size: 0.8rem; font-weight: 600;">Grade: Industrial</span>
+                        <a href="quote.html" class="btn-inquiry">Request Specs <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-addr">
+                <p><strong>Office:</strong> 1 Floor, Suite AB 72, Amazing Grace Plaza, Mushin Road, behind GTB Bank, Isolo, Lagos.</p>
+                <p><strong>Phone:</strong> 0803 315 9094</p>
+                <p><strong>Email:</strong> support@stratagosventures.com</p>
+            </div>
+        </div>
+        <div class="footer-grid">
+            <div>
+                <h3 style="margin-bottom: 1.5rem;">Stratagos Ventures Ltd</h3>
+                <p style="opacity: 0.8; font-size: 0.85rem;">Reliable procurement of industrial chemicals and raw materials across Nigeria.</p>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <ul style="list-style: none; opacity: 0.8; font-size: 0.95rem; line-height: 2.5;">
+                    <li><a href="index.html" style="color: white; text-decoration: none;">Home</a></li>
+                    <li><a href="expertise.html" style="color: white; text-decoration: none;">Expertise</a></li>
+                    <li><a href="index.html#quote" style="color: white; text-decoration: none;">Get a Quote</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Legal</h3>
+                <p style="opacity: 0.8; font-size: 0.85rem;">© 2026 Stratagos Ventures Ltd.</p>
+                <p style="color: var(--accent); font-weight: 700; margin-top: 10px;">stratagos copyright reserved</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

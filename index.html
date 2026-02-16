@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stratagos Ventures Ltd | Industrial Sourcing & Logistics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #058d49; /* Corporate Green */
+            --accent: #d4af37;  /* Premium Gold */
+            --dark: #0f172a;    /* Navy Slate */
+            --light: #f8fafc;
+            --white: #ffffff;
+            --shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background: var(--white);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none; letter-spacing: -0.5px; }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; font-size: 0.95rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+        .cta-quote { background: var(--primary); color: white !important; padding: 0.8rem 1.5rem; border-radius: 6px; }
+        .cta-quote:hover { background: var(--dark); }
+
+        /* --- HERO --- */
+        header {
+            height: 80vh;
+            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), 
+                        url('images/hero-bg.png'); 
+            background-size: cover; background-position: center;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding: 0 5%;
+        }
+        .hero-inner h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; margin-bottom: 1.5rem; line-height: 1.1; }
+        .hero-inner p { font-size: 1.25rem; max-width: 800px; margin: 0 auto 2.5rem; opacity: 0.9; }
+
+        /* --- SECTIONS --- */
+        section { padding: 90px 8%; }
+        .section-header { text-align: center; margin-bottom: 4.5rem; }
+        .section-header h2 { font-size: 2.3rem; color: var(--primary); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .section-header .line { width: 60px; height: 4px; background: var(--accent); margin: 0 auto; }
+
+        /* --- SECTORS (4 Grid) --- */
+        .grid-sectors { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; }
+        .sector-card { background: white; padding: 3rem 2rem; border-radius: 12px; box-shadow: var(--shadow); transition: 0.4s; text-align: center; }
+        .sector-card:hover { transform: translateY(-10px); }
+        .sector-card i { font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem; }
+
+        /* --- EXPERTISE (6 Box Grid) --- */
+        .grid-expertise { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
+        .exp-box { background: white; border-radius: 15px; overflow: hidden; box-shadow: var(--shadow); }
+        .exp-img { width: 100%; height: 230px; object-fit: cover; }
+        .exp-body { padding: 2rem; }
+        .exp-body h3 { color: var(--primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 12px; font-size: 1.25rem; }
+
+        /* --- PRODUCTS --- */
+        .product-section { background: var(--dark); color: white; text-align: center; }
+        .tag-wrap { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2rem; margin-top: 3rem; }
+        .tag { border: 1.5px solid var(--accent); padding: 0.8rem 1.8rem; border-radius: 5px; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px; }
+
+        /* --- CEO & TESTIMONIALS --- */
+        .ceo-container { display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: center; margin-bottom: 5rem; }
+        .ceo-img { width: 100%; border-radius: 20px; box-shadow: 20px 20px 0 var(--primary); }
+        .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 4rem; }
+        .testi-card { background: white; padding: 2.5rem; border-radius: 12px; border-top: 5px solid var(--primary); box-shadow: var(--shadow); font-style: italic; }
+
+        /* --- MESSAGE PORTAL & CONTACT --- */
+        .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+        .form-card { background: white; padding: 3.5rem; border-radius: 20px; box-shadow: var(--shadow); }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.6rem; font-weight: 700; color: var(--primary); font-size: 0.9rem; }
+        .form-group input, .form-group textarea { width: 100%; padding: 1rem; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 1rem; outline-color: var(--primary); }
+        .file-upload { border: 2px dashed var(--accent); padding: 2rem; text-align: center; border-radius: 10px; background: #fffcf0; cursor: pointer; transition: 0.3s; }
+        .file-upload:hover { background: #fdf6d8; }
+        
+        .map-frame { height: 100%; min-height: 450px; border-radius: 20px; overflow: hidden; border: 10px solid white; box-shadow: var(--shadow); }
+
+        /* --- FOOTER (Based on Screenshot) --- */
+        footer { background: #0f172a; color: white; padding: 80px 8% 40px; }
+        .footer-top { display: flex; justify-content: flex-end; margin-bottom: 40px; }
+        .footer-addr { border-left: 3px solid var(--accent); padding-left: 20px; text-align: left; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 4rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 45px; }
+        .socials a { color: white; margin-right: 20px; font-size: 1.4rem; transition: 0.3s; }
+        .socials a:hover { color: var(--accent); }
+
+        .whatsapp-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; z-index: 1000; box-shadow: 0 10px 25px rgba(0,0,0,0.2); text-decoration: none; }
+
+        @media (max-width: 992px) { .ceo-container, .contact-layout { grid-template-columns: 1fr; } .nav-links { display: none; } }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/2348033159094" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <nav>
+        <a href="index.html" class="logo">STRATAGOS <span>VENTURES LTD</span></a>
+        <ul class="nav-links">
+            <li><a href="sectors.html">Sectors</a></li>
+            <li><a href="expertise.html">Expertise</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="quote.html" class="cta-quote">Get a Quote</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <div class="hero-inner">
+            <h1>Industrial Supply Chain Simplified</h1>
+            <p>Your strategic partner in high-purity chemicals, nationwide logistics, and industrial procurement across Nigeria.</p>
+            <a href="#expertise" style="background: var(--accent); color: var(--dark); padding: 1rem 2.5rem; border-radius: 5px; text-decoration: none; font-weight: 800; text-transform: uppercase; font-size: 0.9rem;">Explore Capabilities</a>
+        </div>
+    </header>
+
+    <section id="sectors">
+        <div class="section-header"><h2>Sectors We Serve</h2><div class="line"></div></div>
+        <div class="grid-sectors">
+            <div class="sector-card"><i class="fas fa-beer"></i><h3>Brewing</h3><p>Supply of specialized enzymes and clarification agents.</p></div>
+            <div class="sector-card"><i class="fas fa-pills"></i><h3>Pharma</h3><p>High-purity raw materials meeting global health standards.</p></div>
+            <div class="sector-card"><i class="fas fa-utensils"></i><h3>Food</h3><p>Premium food-grade additives and preservatives.</p></div>
+            <div class="sector-card"><i class="fas fa-industry"></i><h3>Manufacturing</h3><p>Bulk industrial chemicals for heavy production cycles.</p></div>
+        </div>
+    </section>
+
+    <section id="expertise" style="background: #f1f5f9;">
+        <div class="section-header"><h2>Our Core Expertise</h2><div class="line"></div></div>
+        <div class="grid-expertise">
+            <div class="exp-box">
+                <img src="images/service1.png" class="exp-img">
+                <div class="exp-body"><h3><i class="fas fa-flask"></i> Industrial Chemicals</h3><p>Direct sourcing of critical chemicals for manufacturing plants.</p></div>
+            </div>
+            <div class="exp-box">
+                <img src="images/logistics.png" class="exp-img">
+                <div class="exp-body"><h3><i class="fas fa-truck"></i> Logistics Solutions</h3><p>Efficient haulage and distribution ensuring zero downtime.</p></div>
+            </div>
+            <div class="exp-box">
+                <img src="images/fumigation.png" class="exp-img">
+                <div class="exp-body"><h3><i class="fas fa-shield-virus"></i> Fumigation</h3><p>Pest control and industrial hygiene management.</p></div>
+            </div>
+            <div class="exp-box">
+                <img src="images/commodities.png" class="exp-img">
+                <div class="exp-body"><h3><i class="fas fa-boxes-stacked"></i> Commodity Sourcing</h3><p>Procurement of raw industrial materials at scale.</p></div>
+            </div>
+            <div class="exp-box">
+                <img src="images/bureau.png" class="exp-img">
+                <div class="exp-body"><h3><i class="fas fa-briefcase"></i> Bureau Services</h3><p>Corporate support for optimized administrative workflow.</p></div>
+            </div>
+            <div class="exp-box">
+                <img src="images/quality (2).png" class="exp-img">
+                <div class="exp-body"><h3><i class="fas fa-check-double"></i> Solar lighting installation and solutions</h3><p>Professional sales and installation of reliable, energy-efficient solar lighting solutions.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="product-section">
+        <div class="section-header"><h2 style="color: white;">Products We Supplied</h2><div class="line"></div></div>
+        <div class="tag-wrap">
+            <div class="tag">Termamyl SC DS</div><div class="tag">Whirlfloc</div><div class="tag">Biofine Clear A3</div><div class="tag">Hitempase STXL</div>
+            <div class="tag">IKE Hops</div><div class="tag">AMG BrewQ</div><div class="tag">Diazyme TGA</div><div class="tag">Lactic Acid 80%</div>
+            <div class="tag">BK 75</div><div class="tag">Hops Extract</div><div class="tag">ISO Hops</div>
+            <div class="tag">Flavours</div><div class="tag">Vicfine</div><div class="tag">Stabisol</div><div class="tag">Solar lighting installation and solutions</div><div class="tag">And More</div>
+        </div>
+    </section>
+
+    <section>
+        <div class="ceo-container">
+            <img src="images/anthony-udobong.png" class="ceo-img" alt="Anthony Udobong">
+            <div>
+                <p style="font-size: 1.6rem; font-style: italic; color: var(--primary); margin-bottom: 1.5rem; border-left: 5px solid var(--accent); padding-left: 20px;">"We ensure that Nigerian industries operate without interruption by proactively eliminating supply chain gaps that often lead to costly production delays. Through reliable sourcing, timely delivery, and consistent material availability, we help manufacturers maintain smooth operations, meet production targets, and sustain business continuity regardless of market or logistics challenges."</p>
+                <h3 style="font-size: 2.2rem; color: var(--dark);">Anthony Udobong</h3>
+                <p style="font-weight: 700; color: var(--accent); letter-spacing: 2px; text-transform: uppercase;">Founder & CEO, Stratagos Ventures Ltd</p>
+            </div>
+        </div>
+        
+        <div class="testi-grid">
+            <div class="testi-card">"The most reliable partner for industrial chemical sourcing in Lagos." - <strong>Lead Brewer</strong></div>
+            <div class="testi-card">"Their logistics team ensures our raw materials arrive ahead of schedule." - <strong>Supply Chain Mgr</strong></div>
+            <div class="testi-card">"Professionalism and transparency at every stage of procurement." - <strong>Operations Director</strong></div>
+        </div>
+    </section>
+
+    <section id="contact" style="background: white;">
+        <div class="section-header"><h2>Connect With Us</h2><div class="line"></div></div>
+        <div class="contact-layout">
+            <div class="form-card" id="quote">
+                <h3 style="margin-bottom: 2rem; color: var(--primary);">Get a Quote / Message Portal</h3>
+                <form>
+                    <div class="form-group"><label>Full Name</label><input type="text" required></div>
+                    <div class="form-group"><label>Email Address</label><input type="email" required></div>
+                    <div class="form-group"><label>Requirement Details</label><textarea rows="4" placeholder="Describe what you need..."></textarea></div>
+                    <div class="form-group">
+                        <label>Attach RFQ / Specs</label>
+                        <div class="file-upload" onclick="document.getElementById('fileIn').click()">
+                            <i class="fas fa-upload" style="color: var(--accent); font-size: 1.5rem; margin-bottom: 10px;"></i>
+                            <p id="fileLabel">Upload Document (PDF/JPG)</p>
+                            <input type="file" id="fileIn" hidden onchange="document.getElementById('fileLabel').innerText = this.files[0].name">
+                        </div>
+                    </div>
+                    <button type="submit" style="width: 100%; padding: 1.2rem; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: 800; cursor: pointer;">SEND ENQUIRY</button>
+                </form>
+            </div>
+            <div class="map-frame">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.8580227926955!2d3.3392398745511374!3d6.539603523000672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8e2f94548ccb%3A0xedaf6919e87e985b!2sStratagos%20Ventures%20Ltd!5e0!3m2!1sen!2sng!4v1715690000000!5m2!1sen!2sng" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-addr">
+                <p><strong>Office:</strong> 1 Floor, Suite AB 72, Amazing Grace Plaza, Mushin Road, behind GTB Bank, Isolo Lagos.</p>
+                <p><strong>Phone:</strong> 0803 315 9094</p>
+                <p><strong>email:</strong> support@stratagosventures.com</p>
+            </div>
+        </div>
+        <div class="footer-grid">
+            <div>
+                <h3 style="color: white; margin-bottom: 1.5rem;">Stratagos Ventures Ltd</h3>
+                <p style="opacity: 0.8; font-size: 0.95rem; margin-bottom: 1.5rem;">The strategic backbone for industrial manufacturing and logistics excellence in Nigeria.</p>
+                <div class="socials">
+                    <a href="https://www.linkedin.com/in/stratagos-ventures-ltd-1744442a0/"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <ul style="list-style: none; opacity: 0.8; font-size: 0.95rem; line-height: 2.5;">
+                    <li><a href="sectors.html" style="color: white; text-decoration: none;">Industries Served</a></li>
+                    <li><a href="expertise.html" style="color: white; text-decoration: none;">Core Expertise</a></li>
+                    <li><a href="products.html" style="color: white; text-decoration: none;">Supplied Products</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Legal</h3>
+                <p style="opacity: 0.8; font-size: 0.95rem;">© 2026 Stratagos Ventures Ltd. <br>All Rights Reserved.</p>
+                <p style="color: var(--accent); font-weight: 700; margin-top: 10px;">stratagos copyright reserved</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

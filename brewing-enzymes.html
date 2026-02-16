@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brewing Enzymes | Stratagos Ventures Ltd</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #058d49;
+            --accent: #d4af37;
+            --dark: #0f172a;
+            --footer-bg: #0b1120;
+            --light: #f8fafc;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none; }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; font-size: 0.95rem; }
+        .cta-quote { background: var(--primary); color: white !important; padding: 0.8rem 1.5rem; border-radius: 6px; }
+
+        /* Hero */
+        .category-hero {
+            padding: 70px 5%;
+            background: linear-gradient(rgba(5, 141, 73, 0.92), rgba(15, 23, 42, 0.95));
+            color: white;
+            text-align: center;
+        }
+        .category-hero h1 { font-size: 2.8rem; margin-bottom: 15px; font-weight: 800; }
+        .category-hero p { max-width: 800px; margin: 0 auto; opacity: 0.9; font-size: 1.1rem; }
+
+        /* Product Grid */
+        .product-section { padding: 60px 5% 100px; }
+        .enzyme-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 25px; 
+        }
+
+        .enzyme-card { 
+            background: white; 
+            border-radius: 12px; 
+            padding: 30px; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary);
+            display: flex;
+            flex-direction: column;
+            transition: 0.3s ease;
+        }
+        .enzyme-card:hover { transform: translateY(-8px); border-top-color: var(--accent); }
+        
+        .enzyme-type { 
+            color: var(--accent); 
+            font-weight: 800; 
+            font-size: 0.7rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1.2px; 
+            margin-bottom: 10px; 
+        }
+        .enzyme-card h3 { color: var(--dark); font-size: 1.3rem; margin-bottom: 12px; }
+        .enzyme-card p { color: #64748b; font-size: 0.88rem; margin-bottom: 20px; flex-grow: 1; }
+
+        .benefit-list { list-style: none; margin-bottom: 25px; border-top: 1px solid #f1f5f9; padding-top: 15px; }
+        .benefit-list li { font-size: 0.82rem; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; font-weight: 600; color: #334155; }
+        .benefit-list i { color: var(--primary); font-size: 0.75rem; }
+
+        .btn-rfq { 
+            text-align: center;
+            padding: 10px; 
+            background: var(--light);
+            color: var(--primary); 
+            text-decoration: none; 
+            font-weight: 700; 
+            border-radius: 6px; 
+            font-size: 0.85rem; 
+            transition: 0.3s;
+            border: 1px solid var(--primary);
+        }
+        .btn-rfq:hover { background: var(--primary); color: white; }
+
+        /* WhatsApp */
+        .whatsapp-btn { 
+            position: fixed; bottom: 30px; right: 30px; 
+            background: #25d366; color: white; 
+            width: 60px; height: 60px; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 30px; z-index: 1000; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+            text-decoration: none; 
+        }
+
+        /* --- FOOTER (MATCHING IMAGE) --- */
+        footer {
+            background-color: var(--footer-bg);
+            color: #ffffff;
+            padding: 60px 5% 40px;
+        }
+        .footer-contact-info { display: flex; justify-content: flex-end; margin-bottom: 40px; }
+        .contact-block { border-left: 2px solid var(--accent); padding-left: 15px; }
+        .contact-block p { font-size: 0.95rem; margin-bottom: 5px; }
+        .contact-block strong { color: #ffffff; font-weight: 700; }
+        .footer-divider { border-top: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 40px; }
+        .footer-main-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.5fr; gap: 40px; }
+        .footer-brand h2 { font-size: 1.2rem; margin-bottom: 20px; }
+        .footer-brand p { font-size: 0.9rem; opacity: 0.8; margin-bottom: 25px; }
+        .footer-links h3, .footer-legal h3 { font-size: 1.1rem; margin-bottom: 20px; font-weight: 700; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #ffffff; text-decoration: none; opacity: 0.8; font-size: 0.9rem; }
+        .footer-legal p { font-size: 0.85rem; opacity: 0.8; margin-bottom: 10px; }
+        .copyright-gold { color: var(--accent); font-weight: 600; font-size: 0.95rem; margin-top: 15px; }
+        .social-icons { display: flex; gap: 20px; }
+        .social-icons a { color: #ffffff; font-size: 1.2rem; }
+
+        @media (max-width: 992px) {
+            .footer-main-grid { grid-template-columns: 1fr; }
+            .footer-contact-info { justify-content: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/2348033159094" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <nav>
+        <a href="index.html" class="logo">STRATAGOS <span>VENTURES LTD</span></a>
+        <ul class="nav-links">
+            <li><a href="sectors.html">Sectors</a></li>
+            <li><a href="expertise.html">Expertise</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="quote.html" class="cta-quote">Get a Quote</a></li>
+        </ul>
+    </nav>
+
+    <header class="category-hero">
+        <h1>Brewing Enzymes</h1>
+        <p>A comprehensive range of high-performance enzymes to optimize starch conversion, fermentation speed, and filtration efficiency.</p>
+    </header>
+
+    <main class="product-section">
+        <div class="enzyme-grid">
+            
+            <div class="enzyme-card">
+                <span class="enzyme-type">Liquefaction</span>
+                <h3>Termamyl SC DS</h3>
+                <p>Industry-standard alpha-amylase for high-temperature starch liquefaction in adjunct brewing.</p>
+                <ul class="benefit-list">
+                    <li><i class="fas fa-bolt"></i> Rapid viscosity reduction</li>
+                    <li><i class="fas fa-fire"></i> High heat stability</li>
+                </ul>
+                <a href="quote.html" class="btn-rfq">Request RFQ</a>
+            </div>
+
+            <div class="enzyme-card">
+                <span class="enzyme-type">Saccharification</span>
+                <h3>AMG BrewQ</h3>
+                <p>Highly effective glucoamylase that breaks down dextrins into fermentable glucose for maximum yield.</p>
+                <ul class="benefit-list">
+                    <li><i class="fas fa-percentage"></i> Maximizes extract yield</li>
+                    <li><i class="fas fa-vial"></i> Consistent attenuation</li>
+                </ul>
+                <a href="quote.html" class="btn-rfq">Request RFQ</a>
+            </div>
+
+            <div class="enzyme-card">
+                <span class="enzyme-type">Filtration</span>
+                <h3>Ultraflo Max</h3>
+                <p>Enzyme blend for degrading beta-glucans and pentosans to ensure smooth lautering and filtration.</p>
+                <ul class="benefit-list">
+                    <li><i class="fas fa-filter"></i> Faster filtration cycles</li>
+                    <li><i class="fas fa-tint"></i> Better wort clarity</li>
+                </ul>
+                <a href="quote.html" class="btn-rfq">Request RFQ</a>
+            </div>
+
+            <div class="enzyme-card">
+                <span class="enzyme-type">Mashing</span>
+                <h3>Hitempase STXL</h3>
+                <p>Specialized amylase for starch degradation across a wide range of temperatures and pH levels.</p>
+                <ul class="benefit-list">
+                    <li><i class="fas fa-adjust"></i> Wide pH tolerance</li>
+                    <li><i class="fas fa-microchip"></i> Process flexibility</li>
+                </ul>
+                <a href="quote.html" class="btn-rfq">Request RFQ</a>
+            </div>
+
+            <div class="enzyme-card">
+                <span class="enzyme-type">Saccharification</span>
+                <h3>Diazyme TGA</h3>
+                <p>A glucoamylase developed to improve the saccharification of complex starch fractions in the mash tun.</p>
+                <ul class="benefit-list">
+                    <li><i class="fas fa-flask"></i> Complete sugar conversion</li>
+                    <li><i class="fas fa-chart-line"></i> Predictable results</li>
+                </ul>
+                <a href="quote.html" class="btn-rfq">Request RFQ</a>
+            </div>
+
+            <div class="enzyme-card">
+                <span class="enzyme-type">Adjunct Cooking</span>
+                <h3>Ceremix Plus</h3>
+                <p>Multi-enzyme solution specifically designed for the liquefaction of unmalted cereals and adjuncts.</p>
+                <ul class="benefit-list">
+                    <li><i class="fas fa-seedling"></i> Better adjunct utilization</li>
+                    <li><i class="fas fa-clock"></i> Shortened cooking times</li>
+                </ul>
+                <a href="quote.html" class="btn-rfq">Request RFQ</a>
+            </div>
+
+            <div class="enzyme-card">
+                <span class="enzyme-type">Fermentation</span>
+                <h3>Fungamyl</h3>
+                <p>Fungal alpha-amylase used in the fermentation vessel to control the final sugar profile and attenuation.</p>
+                <ul class="benefit-list">
+                    <li><i class="fas fa-bullseye"></i> Targeted sugar control</li>
+                    <li><i class="fas fa-beer"></i> Improved body & mouthfeel</li>
+                </ul>
+                <a href="quote.html" class="btn-rfq">Request RFQ</a>
+            </div>
+
+            <div class="enzyme-card">
+                <span class="enzyme-type">Protein Control</span>
+                <h3>Neutrase</h3>
+                <p>A bacterial endoprotease used to break down proteins and increase the levels of Free Amino Nitrogen (FAN).</p>
+                <ul class="benefit-list">
+                    <li><i class="fas fa-dna"></i> Optimized FAN levels</li>
+                    <li><i class="fas fa-shield-virus"></i> Yeast health support</li>
+                </ul>
+                <a href="quote.html" class="btn-rfq">Request RFQ</a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-contact-info">
+            <div class="contact-block">
+                <p><strong>Office:</strong> 1 Floor, Suite AB 72, Amazing Grace Plaza, Mushin Road, behind GTB Bank, Isolo Lagos.</p>
+                <p><strong>Phone:</strong> 0803 315 9094</p>
+                <p><strong>email:</strong> support@stratagosventures.com</p>
+            </div>
+        </div>
+
+        <div class="footer-divider"></div>
+
+        <div class="footer-main-grid">
+            <div class="footer-brand">
+                <h2>Stratagos Ventures Ltd</h2>
+                <p>The strategic backbone for industrial manufacturing and logistics excellence in Nigeria.</p>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/stratagos-ventures-ltd-1744442a0/"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="sectors.html">Industries Served</a></li>
+                    <li><a href="expertise.html">Core Expertise</a></li>
+                    <li><a href="all-products.html">Supplied Products</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-legal">
+                <h3>Legal</h3>
+                <p>© 2026 Stratagos Ventures Ltd. All Rights Reserved.</p>
+                <div class="copyright-gold">stratagos copyright reserved</div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

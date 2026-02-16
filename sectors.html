@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sectors | Stratagos Ventures Ltd</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #058d49;
+            --primary-dark: #036333;
+            --accent: #d4af37;
+            --dark: #0f172a;
+            --footer-bg: #0b1120;
+            --light-bg: #f1f5f9;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--white); color: var(--dark); line-height: 1.6; overflow-x: hidden; }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            backdrop-filter: blur(10px);
+        }
+        .logo { font-size: 1.4rem; font-weight: 800; color: var(--primary); text-decoration: none; letter-spacing: -0.5px; }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+        .cta-quote { background: var(--primary); color: white !important; padding: 0.7rem 1.4rem; border-radius: 50px; }
+
+        /* Modern Hero Section */
+        .hero-visual {
+            position: relative;
+            padding: 120px 5% 80px;
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero-visual::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80');
+            background-size: cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        .hero-content { position: relative; z-index: 1; }
+        .hero-visual h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 20px; }
+        .hero-visual p { max-width: 600px; margin: 0 auto; font-size: 1.1rem; opacity: 0.8; font-weight: 300; }
+
+        /* Sectors Grid System */
+        .sectors-wrapper { padding: 100px 5%; background: var(--light-bg); }
+        .sector-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .modern-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 40px;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .modern-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            background: rgba(5, 141, 73, 0.1);
+            color: var(--primary);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            transition: 0.3s;
+        }
+        .modern-card:hover .icon-box {
+            background: var(--primary);
+            color: white;
+            transform: rotate(-10deg);
+        }
+
+        .modern-card h3 { font-size: 1.5rem; margin-bottom: 15px; font-weight: 700; color: var(--dark); }
+        .modern-card p { color: #64748b; font-size: 0.95rem; margin-bottom: 25px; flex-grow: 1; }
+
+        .feature-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; }
+        .pill { 
+            padding: 6px 14px; 
+            background: #f1f5f9; 
+            border-radius: 50px; 
+            font-size: 0.75rem; 
+            font-weight: 700; 
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        /* Highlight Section for Solar */
+        .solar-highlight {
+            border: 2px solid var(--accent) !important;
+            background: linear-gradient(145deg, #ffffff, #fffdf5);
+        }
+        .solar-highlight .icon-box { background: rgba(212, 175, 55, 0.1); color: var(--accent); }
+        .solar-highlight:hover .icon-box { background: var(--accent); }
+
+        /* WhatsApp */
+        .whatsapp-btn { 
+            position: fixed; bottom: 30px; right: 30px; 
+            background: #25d366; color: white; 
+            width: 65px; height: 65px; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 32px; z-index: 1000; 
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); 
+            text-decoration: none; 
+            transition: 0.3s;
+        }
+
+        /* --- FOOTER (MATCHING GTO.PNG) --- */
+        footer {
+            background-color: var(--footer-bg);
+            color: #ffffff;
+            padding: 80px 5% 40px;
+        }
+        .footer-contact-info { display: flex; justify-content: flex-end; margin-bottom: 40px; }
+        .contact-block { border-left: 2px solid var(--accent); padding-left: 15px; }
+        .contact-block p { font-size: 0.95rem; margin-bottom: 5px; }
+        .contact-block strong { color: #ffffff; font-weight: 700; }
+        .footer-divider { border-top: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 40px; }
+        .footer-main-grid { display: grid; grid-template-columns: 1.5fr 1fr 1.5fr; gap: 60px; }
+        .footer-brand h2 { font-size: 1.3rem; margin-bottom: 20px; font-weight: 800; }
+        .footer-brand p { font-size: 0.95rem; opacity: 0.7; margin-bottom: 25px; line-height: 1.7; }
+        .footer-links h3, .footer-legal h3 { font-size: 1.1rem; margin-bottom: 25px; font-weight: 700; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #ffffff; text-decoration: none; opacity: 0.7; font-size: 0.95rem; transition: 0.3s; }
+        .footer-legal p { font-size: 0.9rem; opacity: 0.7; margin-bottom: 10px; }
+        .copyright-gold { color: var(--accent); font-weight: 600; font-size: 1rem; margin-top: 20px; text-transform: lowercase; }
+        .social-icons { display: flex; gap: 20px; }
+        .social-icons a { color: #ffffff; font-size: 1.3rem; opacity: 0.8; transition: 0.3s; }
+
+        @media (max-width: 992px) {
+            .footer-main-grid { grid-template-columns: 1fr; gap: 40px; }
+            .footer-contact-info { justify-content: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/2348033159094" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <nav>
+        <a href="index.html" class="logo">STRATAGOS <span>VENTURES LTD </span></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Sectors</a></li>
+            <li><a href="expertise.html">Expertise</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">contact</a></li>
+            <li><a href="quote.html" class="cta-quote">Get a Quote</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero-visual">
+        <div class="hero-content">
+            <h1>Industries We Shape</h1>
+            <p>From industrial chemicals and pharmaceutical raw materials to specialized products across multiple sectors, Stratagos Ventures Ltd provides trusted sourcing and reliable supply solutions that keep businesses moving.
+            We connect companies to verified global suppliers, ensuring quality, compliance, competitive pricing, and seamless delivery — strengthening supply chains and enabling sustainable growth.</p>
+        </div>
+    </section>
+
+    <main class="sectors-wrapper">
+        <div class="sector-grid">
+            
+            <div class="modern-card solar-highlight">
+                <div class="icon-box">
+                    <i class="fas fa-solar-panel"></i>
+                </div>
+                <h3>Solar Lighting & Solutions</h3>
+                <p>Leading the transition to clean energy with professional installation of industrial solar grids, smart street lighting, and sustainable power backup solutions.</p>
+                <div class="feature-pills">
+                    <span class="pill">Renewable</span>
+                    <span class="pill">Installation</span>
+                    <span class="pill">Off-Grid</span>
+                </div>
+            </div>
+
+            <div class="modern-card">
+                <div class="icon-box">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <h3>Food & Agro Processing</h3>
+                <p>Empowering Nigeria’s agricultural sector with specialized enzymes, preservatives, and acidulants to enhance food safety and processing efficiency.</p>
+                <div class="feature-pills">
+                    <span class="pill">Preservation</span>
+                    <span class="pill">Value-Add</span>
+                    <span class="pill">Fortification</span>
+                </div>
+            </div>
+
+            <div class="modern-card">
+                <div class="icon-box">
+                    <i class="fas fa-faucet-drip"></i>
+                </div>
+                <h3>Brewing & Beverage</h3>
+                <p>Providing specialized enzymatic solutions and chemical agents that optimize fermentation, clarity, and yield for Nigeria's beverage giants.</p>
+                <div class="feature-pills">
+                    <span class="pill">Fermentation</span>
+                    <span class="pill">Clarity</span>
+                    <span class="pill">Efficiency</span>
+                </div>
+            </div>
+
+            <div class="modern-card">
+                <div class="icon-box">
+                    <i class="fas fa-microscope"></i>
+                </div>
+                <h3>Pharmaceuticals</h3>
+                <p>Trusted partner for high-purity excipients, binders, and active ingredients compliant with global pharmaceutical manufacturing standards (BP/USP).</p>
+                <div class="feature-pills">
+                    <span class="pill">Compliance</span>
+                    <span class="pill">Excipients</span>
+                    <span class="pill">Binder</span>
+                </div>
+            </div>
+
+            <div class="modern-card">
+                <div class="icon-box">
+                    <i class="fas fa-ship"></i>
+                </div>
+                <h3>Logistics & Haulage</h3>
+                <p>Comprehensive freight forwarding and customs brokerage services, backed by a robust haulage fleet for reliable nationwide delivery.</p>
+                <div class="feature-pills">
+                    <span class="pill">Freight</span>
+                    <span class="pill">Clearing</span>
+                    <span class="pill">Haulage</span>
+                </div>
+            </div>
+
+            <div class="modern-card">
+                <div class="icon-box">
+                    <i class="fas fa-flask-vial"></i>
+                </div>
+                <h3>Industrial Chemicals</h3>
+                <p>Distributing high-performance solvents, acidulants, and specialty chemicals for the paint, ink, and general manufacturing sectors.</p>
+                <div class="feature-pills">
+                    <span class="pill">Solvents</span>
+                    <span class="pill">Inks/Paints</span>
+                    <span class="pill">Bulk Sourcing</span>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-contact-info">
+            <div class="contact-block">
+                <p><strong>Office:</strong> 1 Floor, Suite AB 72, Amazing Grace Plaza, Mushin Road, behind GTB Bank, Isolo Lagos.</p>
+                <p><strong>Phone:</strong> 0803 315 9094</p>
+                <p><strong>email:</strong> support@stratagosventures.com</p>
+            </div>
+        </div>
+
+        <div class="footer-divider"></div>
+
+        <div class="footer-main-grid">
+            <div class="footer-brand">
+                <h2>Stratagos Ventures Ltd</h2>
+                <p>The strategic backbone for industrial manufacturing and logistics excellence in Nigeria.</p>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/stratagos-ventures-ltd-1744442a0/"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="sectors.html">Industries Served</a></li>
+                    <li><a href="expertise.html">Core Expertise</a></li>
+                    <li><a href="all-products.html">Supplied Products</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-legal">
+                <h3>Legal</h3>
+                <p>© 2026 Stratagos Ventures Ltd. <br>All Rights Reserved.</p>
+                <div class="copyright-gold">stratagos copyright reserved</div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
